@@ -61,10 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\btn.cs" />
     <Compile Include="Assets\button.cs" />
     <Compile Include="Assets\camerasetting.cs" />
     <Compile Include="Assets\database.cs" />
+    <Compile Include="Assets\sceneChanger.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

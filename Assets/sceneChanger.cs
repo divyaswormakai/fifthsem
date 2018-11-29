@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class btn : MonoBehaviour {
+public class sceneChanger:MonoBehaviour{
 
     public Button btn1;
-    Vector2 place;
 
     // Use this for initialization
     void Start () {
@@ -22,6 +21,11 @@ public class btn : MonoBehaviour {
     public void Btn1Click()
     {
         SceneManager.LoadScene("Map");
+    }
+
+    public void BlockClick()
+    {
+        SceneManager.LoadScene("database");
     }
 
 

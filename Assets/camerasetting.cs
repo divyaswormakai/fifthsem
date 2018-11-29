@@ -14,20 +14,28 @@ public class camerasetting : MonoBehaviour
     public float zoomSpeed = 0.5f;      // Speed of the camera going back and forth
     public float RotateAmount = 0.5f;
 
-    private bool selectindex;
-    private bool zoomindex;
-    private bool panindex;   
-    private bool orbitindex;     
-    private bool rotateindex;
+    private bool selectindex=false;
+    private bool zoomindex=false;
+    private bool panindex = false;   
+    private bool orbitindex = false;     
+    private bool rotateindex = false;
 
     TextMeshProUGUI txt;
     Button tempButton;
+
+    //Script Objects
+
+    database db = new database();
     //
     // UPDATE
     //
     private void Start()
     {
-        txt = GameObject.Find("text").GetComponent<TextMeshProUGUI>();
+        if (GameObject.Find("text").GetComponent<TextMeshProUGUI>())
+        {
+            txt = GameObject.Find("text").GetComponent<TextMeshProUGUI>();
+        }
+   
     }
 
     void Update()
@@ -55,7 +63,21 @@ public class camerasetting : MonoBehaviour
 
         foreach (Touch touch in Input.touches)
         {
-            // Rotate camera along X and Y axis
+            if (selectindex)
+            {
+                if (touch.phase == TouchPhase.Began)
+                {
+                    Ray raycast = Camera.main.ScreenPointToRay(touch.position);
+                    RaycastHit raycasthit;
+                    if (Physics.Raycast(raycast, out raycasthit))
+                    {
+                        Debug.Log(raycasthit.collider.name);
+                        db.SetBlockName(raycasthit.collider.name.ToString());
+                        db.startsearch();
+                    }
+                    
+                }  
+            }
             if (rotateindex)
             {
                 Vector3 pos = touch.deltaPosition;
@@ -63,7 +85,6 @@ public class camerasetting : MonoBehaviour
                 cam.transform.RotateAround(cam.transform.position, cam.transform.right, -pos.y * turnSpeed);
                 cam.transform.RotateAround(cam.transform.position, Vector3.up, pos.x * turnSpeed);
             }
-
             // Move the camera on it's XY plane
             if (panindex)
             {
@@ -72,10 +93,6 @@ public class camerasetting : MonoBehaviour
                 Vector3 move = new Vector3(-pos.x * panSpeed, -pos.y * panSpeed, 0);
                 cam.transform.Translate(move, Space.Self);
             }
-
-            // Move the camera linearly along Z axis
-
-
             if (orbitindex)
             {
                 Vector3 target = Vector3.zero; //this is the center of the scene, you can use any point here
