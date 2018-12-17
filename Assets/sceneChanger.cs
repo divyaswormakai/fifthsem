@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class sceneChanger:MonoBehaviour{
 
-    public Button btn1;
+    //public Button MapBtn;
+    //public Button MySubject;
 
     // Use this for initialization
     void Start () {
@@ -18,14 +19,24 @@ public class sceneChanger:MonoBehaviour{
 		
 	}
 
-    public void Btn1Click()
+    public void MapScene()
     {
         SceneManager.LoadScene("Map");
     }
 
-    public void BlockClick()
+    public void DatabaseScene()
     {
         SceneManager.LoadScene("database");
+    }
+
+    public void MenuScene()
+    {
+        SceneManager.LoadScene("Main");
+    }
+
+    public void MySubjectScene()
+    {
+        SceneManager.LoadScene("MySubject");
     }
 
 

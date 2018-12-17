@@ -23,9 +23,6 @@ public class camerasetting : MonoBehaviour
     TextMeshProUGUI txt;
     Button tempButton;
 
-    //Script Objects
-
-    database db = new database();
     //
     // UPDATE
     //
@@ -40,6 +37,11 @@ public class camerasetting : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            sceneChanger sch = GameObject.FindObjectOfType(typeof(sceneChanger)) as sceneChanger;
+            sch.MenuScene();
+        }
         //---------------------------------------------
         //BUTTON
         if (zoomindex)
@@ -72,8 +74,10 @@ public class camerasetting : MonoBehaviour
                     if (Physics.Raycast(raycast, out raycasthit))
                     {
                         Debug.Log(raycasthit.collider.name);
+                        database db = GameObject.FindObjectOfType(typeof(database)) as database;
                         db.SetBlockName(raycasthit.collider.name.ToString());
-                        db.startsearch();
+                        sceneChanger sch=GameObject.FindObjectOfType(typeof(sceneChanger)) as sceneChanger;
+                        sch.DatabaseScene();
                     }
                     
                 }  
