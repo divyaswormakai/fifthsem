@@ -302,7 +302,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\btn.cs" />
-    <Compile Include="Assets\camerasetting.cs" />
+    <Compile Include="Assets\camsetting.cs" />
     <Compile Include="Assets\database.cs" />
   </ItemGroup>
   <ItemGroup>
